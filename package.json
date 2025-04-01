@@ -3,12 +3,20 @@
     "version": "1.0.13",
     "description": "A Complete VRChat Wrapper in TypeScript",
     "type": "module",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/mjs/index.js",
+    "types": "./dist/mjs/index.d.ts",
     "files": [
-        "dist"
+        "dist/cjs",
+        "dist/mjs"
     ],
+    "exports": {
+        ".": {
+            "import": "./dist/mjs/index.js",
+            "require": "./dist/cjs/index.js",
+            "types": "./dist/mjs/index.d.ts"
+        }
+    },
     "scripts": {
         "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
         "test": "jest --verbose --silent=false",
@@ -50,12 +58,6 @@
         "totp-generator": "^0.0.14",
         "websocket-ts": "^2.1.5",
         "ws": "^8.14.2"
-    },
-    "exports": {
-        ".": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.cjs"
-        }
     },
     "repository": {
         "type": "git",

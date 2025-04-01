@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import fs from 'fs/promises';
-import { VRChatAPI } from 'VRChatAPI';
+import { VRChatAPI } from './VRChatAPI';
 import { Color as C } from './colors';
 import { CookiesExpired, CookiesNotFound, CookiesReadError, CookiesUser404, CookiesWriteError } from './errors';
 
