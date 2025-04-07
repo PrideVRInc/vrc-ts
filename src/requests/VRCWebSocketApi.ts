@@ -183,9 +183,9 @@ export class VRCWebSocket extends WebSocket {
             );
         }
         super(
-            customURL || vrchatAPI !== undefined
+            customURL || (vrchatAPI !== undefined
                 ? `wss://vrchat.com/?authToken=${vrchatAPI?.instanceCookie.getAuthCookieKey()}`
-                : '',
+                : ''),
             {
                 headers: {
                     'user-agent': customUserAgent || vrchatAPI?.headerAgent || 'ExampleProgram/0.0.1 my@email.com',
