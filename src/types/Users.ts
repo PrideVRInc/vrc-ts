@@ -1,5 +1,6 @@
 import {
     AllTags,
+    BadgeIdType,
     FeedbackIdType,
     FileIdType,
     InstanceIdType,
@@ -115,6 +116,8 @@ export type CurrentUser = {
     receiveMobileInvitations?: boolean;
     /** The last time the user logged in from a mobile device. */
     last_mobile?: string;
+    /** The user's past Platform History. */
+    platform_history?: PlatformHistoryEntity[];
 };
 
 /**
@@ -130,9 +133,15 @@ export type CurrentUser = {
  */
 export enum AgeVerificationStatus {
     Hidden = 'hidden',
-    Age_Verified = 'verified',
+    //Age_Verified = 'verified', //! No longer used
     Verified_18_Plus = '18+',
 }
+
+export type PlatformHistoryEntity = {
+    isMobile: boolean;
+    platform?: null;
+    recorded: string;
+};
 
 export type currentUserOrTwoFactorType = twoFactorAuthResponseType | CurrentUser;
 
@@ -376,13 +385,21 @@ export enum VRCRanksName {
 }
 
 export type UserBadge = {
+    /** When the badge was assigned. */
     assignedAt: string;
+    /** The badge's description. */
     badgeDescription: string;
-    badgeId: string;
-    badgeImageUrl: string;
+    /** The badge's ID. */
+    badgeId: BadgeIdType;
+    /** The badge's name. */
     badgeName: string;
+    /** The badge's image URL. */
+    badgeImageUrl: string;
+    /** If the badge is hidden from the user's profile. */
     hidden: boolean;
+    /** If the badge is showcased on the user's profile. */
     showcased: boolean;
+    /** When the badge was last updated. */
     updated_at: string;
 };
 

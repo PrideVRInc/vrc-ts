@@ -406,6 +406,11 @@ export type GroupMember = {
     managerNotes?: string;
 };
 
+/**
+ *  Same as GroupMember but omitting the user object
+ */
+export type GroupMemberLimitedBanResult = Omit<GroupMember, 'user'>;
+
 export type GroupRole = {
     id: GroupRoleIdType;
     groupId: GroupIdType;
@@ -598,6 +603,10 @@ export enum GroupPermissionEnum {
     groupInstancePlusPortal = 'group-instance-plus-portal',
     groupInstancePlusPortalUnlocked = 'group-instance-plus-portal-unlocked',
     groupInstanceJoin = 'group-instance-join',
+    groupInstanceAgeGatedCreate = 'group-instance-age-gated-create',
+    groupInstanceAgeGatedJoin = 'group-instance-age-gated-join',
+    groupInstanceManage = 'group-instance-manage',
+    groupDefaultRoleManage = 'group-default-role-manage',
 }
 
 export type GroupPermissionsTags =

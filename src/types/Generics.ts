@@ -388,6 +388,7 @@ export type APIPaths = {
         publishWorld: subSectionType;
         unpublishWorld: subSectionType;
         getWorldInstance: subSectionType;
+        getContentRestricted: subSectionType;
     };
 };
 
@@ -492,7 +493,12 @@ export type WorldTags =
     | 'system_approved'
     | 'system_created_recently'
     | 'system_labs'
-    | 'system_updated_recently';
+    | 'system_updated_recently'
+    | 'feature_prints_disabled'
+    | 'feature_drones_disabled'
+    | 'feature_pedestals_disabled'
+    | 'feature_stickers_disabled'
+    | 'feature_emoji_disabled';
 
 export type LanguageTags =
     | 'language_eng'
@@ -572,7 +578,15 @@ export type BaseId = `${string}-${string}-${string}-${string}-${string}`;
 export type UserIdType = string; // Because of literal types, it's not possible to use both types at the same time. :/ (I think)
 export type FriendRequestIdType = `frq_${string}-${string}-${string}-${string}-${string}`;
 export type UserNoteIdType = `unt_${string}-${string}-${string}-${string}-${string}`;
-export type PlayerModerationObjectIdType = `omu_${string}-${string}-${string}-${string}-${string}`; // According to result from VRChat's API, this is the correct ID type, instead of `pmod_xx-xx-xx-xx-xx`
+export type PlayerModerationBlockIdType = `obl_${string}-${string}-${string}-${string}-${string}`;
+export type PlayerModerationMuteIdType = `omu_${string}-${string}-${string}-${string}-${string}`;
+export type PlayerModerationUnmuteIdType = `oun_${string}-${string}-${string}-${string}-${string}`;
+
+export type PlayerModerationObjectIdType =
+    | PlayerModerationBlockIdType
+    | PlayerModerationMuteIdType
+    | PlayerModerationUnmuteIdType; // According to result from VRChat's API, these is the correct ID type, instead of `pmod_xx-xx-xx-xx-xx`
+
 export type PermissionIdType = `prms_${string}-${string}-${string}-${string}-${string}`;
 
 export type WorldIdType = `wrld_${string}-${string}-${string}-${string}-${string}`;
@@ -621,6 +635,9 @@ export type FeedbackIdType = `feedback_${string}-${string}-${string}-${string}-$
 
 export type PrintIdType = `prnt_${string}-${string}-${string}-${string}-${string}`;
 
+export type ContentRestrictedType = `cr_${string}-${string}-${string}-${string}-${string}`;
+
+export type BadgeIdType = `bdg_${string}-${string}-${string}-${string}-${string}`;
 //* -- VRCHAT GENERIC TYPES -- *//
 /**
  * Search order options for searching avatars. Enums: SearchOrderOptions
