@@ -190,6 +190,7 @@ export class VRCWebSocket extends WebSocket {
             {
                 headers: {
                     'user-agent': customUserAgent || vrchatAPI?.headerAgent || 'ExampleProgram/0.0.1 my@email.com',
+                    ...(vrchatAPI?.extraHeaders || {})
                 },
             }
         );

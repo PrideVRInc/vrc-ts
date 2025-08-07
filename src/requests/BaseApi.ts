@@ -50,6 +50,7 @@ export class BaseApi {
         const headers: headerOptions = {
             'User-Agent': this.baseClass.headerAgent, // we set the User_Agent header
             'Content-Type': 'application/json',
+            ...this.baseClass.extraHeaders
         };
 
         if (!currentRequest.cookiesNeeded.includes('none')) {

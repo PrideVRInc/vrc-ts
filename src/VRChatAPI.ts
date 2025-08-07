@@ -38,6 +38,7 @@ export type VRCApiParams = {
     TwoFactorAuthSecret?: string;
     useCookies?: boolean;
     cookiePath?: string;
+    extraHeaders?: Record<string, string>;
 };
 
 /**
@@ -61,6 +62,7 @@ export class VRChatAPI {
     EmailOTPCode: string = process.env.EMAIL_2FA_CODE || '';
     TwoFactorAuthSecret = process.env.VRCHAT_2FA_SECRET || '';
     useCookies: boolean = process.env.USE_COOKIES === 'true' || false;
+    extraHeaders: Record<string, string> = {};
 
     authApi: AuthApi = new AuthApi(this);
     avatarApi: AvatarsApi = new AvatarsApi(this);
@@ -90,6 +92,7 @@ export class VRChatAPI {
         TwoFactorAuthSecret,
         useCookies,
         cookiePath,
+        extraHeaders
     }: VRCApiParams) {
         if (username) {
             this.username = username;
@@ -128,6 +131,10 @@ export class VRChatAPI {
             this.useCookies = useCookies;
         } else {
             this.useCookies = process.env.USE_COOKIES === 'true' || false;
+        }
+
+        if (extraHeaders) {
+            this.extraHeaders = extraHeaders
         }
 
         this.isAuthentificated = false;
